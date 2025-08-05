@@ -107,15 +107,6 @@ To wipe and reset everything:
 
 ## 💡 Recommended CIDRs (examples)
 
-If your host networks use:
-
-* `192.168.0.0/16`
-* `10.0.0.0/24` (Docker default)
-
-Then safe Pod CIDRs might be:
-
 * `10.244.0.0/16` *(used by Flannel and Calico)*
 * `172.20.0.0/16` *(less commonly used)*
-
----
 
