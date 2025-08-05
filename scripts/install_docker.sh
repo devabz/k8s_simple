@@ -1,32 +1,18 @@
 #!/bin/bash
 
-# Update package repo
-apt-get update -y
+# Add Docker's official GPG key:
+sudo apt-get update
+sudo apt-get install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
 
-# Prerequisites
-apt-get install apt-transport-https ca-certificates curl gnupg lsb-release -y
+# Add the repository to Apt sources:
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
 
-# Add Docker GPG keys
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker- archive-keyring.gpg
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-# Add Docker rep to apt sources
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg]     https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list >    /dev/null
-
-# Update again
-apt-get update -y
-
-# Install Docker
-apt-get install docker-ce docker-ce-cli containerd.io -y
-
-# Update docker daemon
-cp scripts/daemon.json /etc/docker/daemon.json
-
-# Enable start on boot 
-systemctl enable docker
-
-# Reload Docker Daemon
-systemctl daemon-reload
-systemctl restart docker
-
-# Print verson
-docker --version
