@@ -39,16 +39,6 @@
    # disabled_plugins = ["cri"]
    ```
 
-5. **Set correct sandbox image and registry endpoint** *(optional but recommended)*
-   In `/etc/containerd/config.toml`, under `[plugins."io.containerd.grpc.v1.cri"]`:
-
-   ```toml
-   sandbox_image = "registry.k8s.io/pause:3.10"
-
-   [plugins."io.containerd.grpc.v1.cri".registry.mirrors."registry.k8s.io"]
-     endpoint = ["https://registry.k8s.io"]
-   ```
-
 6. **Restart containerd**
 
    ```bash
