@@ -1,4 +1,4 @@
 .env
 *.ipynb
 *.json*
-!resources/droplets.json
+!resources/vms.json
