@@ -2,9 +2,6 @@
 #
 # Common setup for all servers (Control Plane and Nodes)
 
-cd /root
-
-realpath .
 
 set -euxo pipefail
 
