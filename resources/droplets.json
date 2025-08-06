@@ -15,7 +15,7 @@
     "backups": false,
     "ipv6": false,
     "monitoring": true,
-    "user_data": "#cloud-config\nruncmd:\n  - curl -sL https://github.com/devabz/k8s_simple/blob/main/scripts/common.sh | bash",
+    "user_data": "#cloud-config\nruncmd:\n  - curl -sL https://raw.githubusercontent.com/devabz/k8s_simple/refs/heads/main/scripts/common.sh | bash",
     "tags": [
         "k8s"
     ]
