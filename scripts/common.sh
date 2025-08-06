@@ -2,12 +2,17 @@
 #
 # Common setup for all servers (Control Plane and Nodes)
 
+
 set -euxo pipefail
 
 # Kubernetes Variable Declaration
 KUBERNETES_VERSION="v1.30"
 CRIO_VERSION="v1.30"
 KUBERNETES_INSTALL_VERSION="1.30.0-1.1"
+CODE_REPO="https://github.com/devabz/k8s_simple.git"
+
+# Clone repo
+git clone $CODE_REPO
 
 # Disable swap
 sudo swapoff -a
